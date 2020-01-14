@@ -380,7 +380,7 @@ input, select, textarea {
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
 	}
-	block[name="mask"],
+	div[name="mask"],
 	input[type="file"],
 	input[type="text"],
 	input[type="password"],
@@ -1656,3 +1656,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+img{
+	width:100%;
+	height:auto;
+}

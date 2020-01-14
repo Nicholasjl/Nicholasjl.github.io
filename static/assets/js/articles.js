@@ -1,7 +1,7 @@
 
 
 function get_head(name){
-    url=backUrl+'/articles/' + name + '.html';
+    url='/articles/' + name + '.html';
     $.ajax({
         type: "get",
         dataType: "html",
@@ -14,7 +14,7 @@ function get_head(name){
 }
 
 function get_article(name){
-    url=backUrl+'/articles/' + name + '.html';
+    url='/articles/' + name + '.html';
     $.ajax({
         type: "get",
         dataType: "html",
@@ -32,8 +32,8 @@ var ARTICLE_ITEM_TEMPLATE ="\
     <a href='#article' onclick=get_article('{title}')>\
     <h3>{title}</h3>\
     <h4>{modify_time}</h4>\
-    <br />\
     </a>\
+    <hr style='opacity: 0.5;'/>\
 ";
 
 
@@ -57,9 +57,10 @@ function sort(data) {
 
 function renderArticleItem(data) {
     
+    
     var articleHtml = "";
     for (var key in data) {
-    
+        
         if (data[key]["title"]){
                 articleHtml += ARTICLE_ITEM_TEMPLATE
                 .replace(/\{title}/g, data[key]["title"])
@@ -68,19 +69,34 @@ function renderArticleItem(data) {
             
 
     }
-    $("#article-b").html(articleHtml);
+    $("#list-b").html(articleHtml);
 }
 
 
+
 function getArticleList() {
-    var url = backUrl+"/api/articles/";
+    var url = "/api/articles/";
     $.ajax({
         type: "get",
         dataType: "json",
         url: url,
         success: function(data) {
-            
             renderArticleItem(data);
         }
     });
 };
+$(function(){
+    getArticleList();
+    get_head('intro');
+    get_head('about');
+    get_head('contact');
+    $('body').keydown(function(){
+		
+		if(event.keyCode==116) {
+            
+            location.href="#";
+           
+        }
+        return;
+	});
+})

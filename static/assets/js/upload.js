@@ -37,13 +37,13 @@ function Upload(){
     
     uploadcount = uploadFiles.length ;
     
-    var url = backUrl+"/api/upload/?pwd="+sha256($('#pwd').val());                    // 接收上传文件的后台地址
+    var url = "/api/upload/?pwd="+sha256($('#pwd').val());                    // 接收上传文件的后台地址
     // FormData 对象
     var form = new FormData();
     
     for (var i=0; i< uploadcount; i++){
         form.append("file",uploadFiles[i]); 
-        console.log(form);
+        
         $.ajax({
             url: url,
             type:'post',

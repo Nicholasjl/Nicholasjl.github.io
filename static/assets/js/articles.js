@@ -1,7 +1,7 @@
 
 
 function get_head(name){
-    url='/articles/' + name + '.html';
+    url=backUrl+'/articles/' + name + '.html';
     $.ajax({
         type: "get",
         dataType: "html",
@@ -14,7 +14,7 @@ function get_head(name){
 }
 
 function get_article(name){
-    url='/articles/' + name + '.html';
+    url=backUrl+'/articles/' + name + '.html';
     $.ajax({
         type: "get",
         dataType: "html",
@@ -75,7 +75,7 @@ function renderArticleItem(data) {
 
 
 function getArticleList() {
-    var url = "/api/articles/";
+    var url = backUrl+"/api/articles/";
     $.ajax({
         type: "get",
         dataType: "json",
